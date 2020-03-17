@@ -16,3 +16,6 @@ D:\downloads\USBWebserver v8.6 (2)\root\github\Lorenzo\Programmaontwikkeling\Pro
 D:\downloads\USBWebserver v8.6 (2)\root\github\Lorenzo\Programmaontwikkeling\Project 2\Project2-koken_voor_groepen\Project2-koken_voor_groepen\obj\Debug\Project2-koken_voor_groepen.exe
 D:\downloads\USBWebserver v8.6 (2)\root\github\Lorenzo\Programmaontwikkeling\Project 2\Project2-koken_voor_groepen\Project2-koken_voor_groepen\obj\Debug\Project2-koken_voor_groepen.xml
 D:\downloads\USBWebserver v8.6 (2)\root\github\Lorenzo\Programmaontwikkeling\Project 2\Project2-koken_voor_groepen\Project2-koken_voor_groepen\obj\Debug\Project2-koken_voor_groepen.pdb
+D:\downloads\USBWebserver v8.6 (2)\root\github\Lorenzo\Programmaontwikkeling\Project 2\Project2-koken_voor_groepen\Project2-koken_voor_groepen\obj\Debug\Project2_koken_voor_groepen.Gerecht_toevoegen.resources
+D:\downloads\USBWebserver v8.6 (2)\root\github\Lorenzo\Programmaontwikkeling\Project 2\Project2-koken_voor_groepen\Project2-koken_voor_groepen\obj\Debug\Project2_koken_voor_groepen.evenement_Toevoegen.resources
+D:\downloads\USBWebserver v8.6 (2)\root\github\Lorenzo\Programmaontwikkeling\Project 2\Project2-koken_voor_groepen\Project2-koken_voor_groepen\obj\Debug\Project2_koken_voor_groepen.IngredientAanpassen.resources

@@ -77,11 +77,25 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="evenement.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.vb">
       <DependentUpon>Form1.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IngredientAanpassen.Designer.vb">
+      <DependentUpon>IngredientAanpassen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="IngredientAanpassen.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gerecht.vb" />
+    <Compile Include="Gerecht_toevoegen.Designer.vb">
+      <DependentUpon>Gerecht_toevoegen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Gerecht_toevoegen.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -99,16 +113,32 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="evenement_Toevoegen.Designer.vb">
+      <DependentUpon>evenement_Toevoegen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="evenement_Toevoegen.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="product.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IngredientAanpassen.resx">
+      <DependentUpon>IngredientAanpassen.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gerecht_toevoegen.resx">
+      <DependentUpon>Gerecht_toevoegen.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="evenement_Toevoegen.resx">
+      <DependentUpon>evenement_Toevoegen.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
