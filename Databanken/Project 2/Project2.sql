@@ -26,6 +26,7 @@ CREATE TABLE `project2`.`winkel` (
 CREATE TABLE `project2`.`gerecht` (
   `idgerecht` INT NOT NULL AUTO_INCREMENT,
   `naam` VARCHAR(45) NULL,
+
   PRIMARY KEY (`idgerecht`),
   INDEX `product_idx` (`idproduct` ASC),
   CONSTRAINT `product`
@@ -109,5 +110,36 @@ ADD CONSTRAINT `product`
 ALTER TABLE `project2`.`product` 
 ADD COLUMN `hoeveelheid` VARCHAR(45) NULL AFTER `idwinkel`;
 
+ALTER TABLE `project2`.`product` 
+ADD INDEX `FK_winkel_idx` (`idwinkel` ASC);
+;
+ALTER TABLE `project2`.`product` 
+ADD CONSTRAINT `FK_winkel`
+  FOREIGN KEY (`idwinkel`)
+  REFERENCES `project2`.`product` (`idwinkel`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `project2`.`winkel` 
+ADD CONSTRAINT `productwinkel`
+  FOREIGN KEY (`idwinkel`)
+  REFERENCES `project2`.`product` (`idwinkel`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+  
+  ALTER TABLE `project2`.`gerechtproduct` 
+CHANGE COLUMN `idkoppeltabel2` `idgerechtproduct` INT(11) NOT NULL ;
+
+ALTER TABLE `project2`.`product` 
+CHANGE COLUMN `naam` `naamProduct` VARCHAR(45) NULL DEFAULT NULL ;
+
+
+create view gerechtmetproducten as 
+SELECT gerechtproduct.idgerechtproduct, gerechtproduct.idgerecht, product.idproduct, gerecht.naam, product.hoeveelheid,gerechtproduct.Hoeveelheid as HoeveelheidInGerecht, product.naamProduct FROM 
+(gerechtproduct join gerecht on gerecht.idgerecht = gerechtproduct.idgerecht) 
+join product on product.idproduct = gerechtproduct.idproduct;
+
+
+select * from (gerechtproduct join
 
 
