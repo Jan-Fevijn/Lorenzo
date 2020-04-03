@@ -32,7 +32,7 @@ if ($conn->connect_error) {
 </head>
 <body>
 <header>
-    <p>Welkom Beheerder</p>
+    <p>Welkom</p>
         <ul class="main-nav">
             <li><a href="#">Nav1</a></li>
             <li><a href="#">Nav2</a></li>
@@ -40,8 +40,10 @@ if ($conn->connect_error) {
         </ul>
     </header>
 
-    <main>
 
-    </main>
+
+
+   
+    
 </body>
 </html>

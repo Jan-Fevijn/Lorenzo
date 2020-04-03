@@ -35,8 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // controle gbr en ww + guery maken
             $gbr = $_POST["Gebruikersnaam"];
             $ww = $_POST["Wachtwoord"];
-            $sql_controleBeheerder = "SELECT id, gbr, ww, beheerder FROM gebruiker WHERE gbr = '" . $gbr . "' and ww = '" . $ww . "' and beheerder = '1'";
-            $sql_controleGebruiker = "SELECT id, gbr, ww, beheerder FROM gebruiker WHERE gbr = '" . $gbr . "' and ww = '" . $ww . "'and beheerder = '0'";
+            $sql_controleBeheerder = "SELECT id, gbr, ww FROM gebruiker WHERE gbr = '" . $gbr . "' and ww = '" . $ww . "'";
+            $sql_controleGebruiker = "SELECT id, gbr, ww FROM gebruiker WHERE gbr = '" . $gbr . "' and ww = '" . $ww . "'";
             $resultaat = mysqli_query($conn,$sql_controleGebruiker);
             $result = mysqli_query($conn,$sql_controleBeheerder);
             if ($row = mysqli_fetch_assoc($resultaat)){
@@ -44,19 +44,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION["loggedIn"] = TRUE;
                 $_SESSION["loginID"] = $row["id"];
 
-                //check login gebruiker
-                if ($_SESSION["loggedIn"] == TRUE) {
-                    header("location: ../Main_Pages/Main_Page_gebruiker.php");
-                } else {
-                    header("location: ../index.php");
-                }
+            
 
-            }elseif($row = mysqli_fetch_assoc($result)){
-                echo $row["id"];
-                $_SESSION["loggedIn"] = TRUE;
-                $_SESSION["loginID"] = $row["id"];
-
-                //check login beheerder
+                //check login 
                 if ($_SESSION["loggedIn"] == TRUE) {
                     header("location: ../Main_Pages/Main_Page_beheerder.php");
                 } else {
