@@ -34,9 +34,9 @@ if ($conn->connect_error) {
 <header>
     <p>Welkom</p>
         <ul class="main-nav">
-            <li><a href="#">Nav1</a></li>
-            <li><a href="#">Nav2</a></li>
-            <li><a href="#">Nav3</a></li>
+            <li><a href="#">Afwezigheidslijst</a></li>
+            <li><a href="#">Registreren</a></li>
+            <li><a href="...\GIP\php\AfwezigeLeerkracht.php">Afwezige leerkracht bijvoegen</a></li>
         </ul>
     </header>
 
