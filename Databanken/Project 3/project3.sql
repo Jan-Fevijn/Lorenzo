@@ -70,3 +70,23 @@ INSERT INTO `project3`.`transactie` (`code`, `idbrood`) VALUES ('0123456789', '2
 INSERT INTO `project3`.`transactie` (`code`, `idbrood`) VALUES ('9876543210', '8');
 
 
+ALTER TABLE `project3`.`automaat` 
+ADD INDEX `broodinautomaat_idx` (`broodid` ASC);
+;
+ALTER TABLE `project3`.`automaat` 
+ADD CONSTRAINT `broodinautomaat`
+  FOREIGN KEY (`broodid`)
+  REFERENCES `project3`.`brood` (`idbrood`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+
+ALTER TABLE `project3`.`transactie` 
+ADD INDEX `transactievanbrood_idx` (`idbrood` ASC);
+;
+ALTER TABLE `project3`.`transactie` 
+ADD CONSTRAINT `transactievanbrood`
+  FOREIGN KEY (`idbrood`)
+  REFERENCES `project3`.`brood` (`idbrood`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
