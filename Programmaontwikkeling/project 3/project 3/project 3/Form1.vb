@@ -11,4 +11,20 @@ Public Class Form1
         Me.Hide()
         Brood_Toevoegen.Show()
     End Sub
+
+    Private Sub btnTonen_Click(sender As Object, e As EventArgs) Handles btnTonen.Click
+        Dim conn As New MySqlConnection("server=localhost;user=root;database=project3;port=3307;password=usbw;")
+        Try
+            Dim Str = "SELECT * FROM broodmetprijs"
+            conn.Open()
+            Dim Search As New MySqlDataAdapter(Str, conn)
+            Dim ds As DataSet = New DataSet
+            Search.Fill(ds, "broodmetprijs")
+            broodmetprijs.DataSource = ds.Tables("broodmetprijs")
+            conn.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            conn.Close()
+        End Try
+    End Sub
 End Class
