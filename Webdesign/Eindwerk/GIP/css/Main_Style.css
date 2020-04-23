@@ -1,13 +1,10 @@
-html{
+body{
     height: 100%;
     width: 100%;
-    background-color: rgba(211, 211, 211, 0.301);
-}
-body{
-    width: 100%;
+    background-color: orangered;
 }
 header{
-    background-color: rgba(0, 0, 0, 0.644);
+    background-color: rgba;
     text-align: right;
     padding: 15px;
 }
@@ -22,13 +19,13 @@ header li{
 
 header ul li a{
     text-decoration: none;
-    color: white;
+    color: black;
 }
 
 
 header p{
     font-size: 18px;
-    color: white;
+    color: rgb(198, 185, 185);
     margin-left: 20px;
     display: inline;
 }

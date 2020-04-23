@@ -27,7 +27,7 @@ if ($conn->connect_error) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/reset.css"> 
-    <link rel="stylesheet" type="text/css" href="../css/Main_Style.css"> 
+    <link rel="stylesheet" type="text/css" href="css/Main_Style.css">
     <title>main_page_beheerder</title>
 </head>
 <body>
@@ -35,8 +35,9 @@ if ($conn->connect_error) {
     <p>Welkom</p>
         <ul class="main-nav">
             <li><a href="#">Afwezigheidslijst</a></li>
-            <li><a href="#">Registreren</a></li>
-            <li><a href="...\GIP\php\AfwezigeLeerkracht.php">Afwezige leerkracht bijvoegen</a></li>
+            <li><a href="registreren.php">Registreren</a></li>
+            <li><a href="AfwezigeLeerkracht.php">Afwezige leerkracht bijvoegen</a></li>
+            <li><a href="index.php">Afmelden</a></li>
         </ul>
     </header>
 

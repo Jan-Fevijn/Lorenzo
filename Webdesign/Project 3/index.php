@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-<h1>Inloggen met KLantencode</h1>
+<h1>Inloggen met Klantencode</h1>
 <form action="inloggen.php" method="post">
 Klantencode: <input type="password" name="Klantencode"><br>
 <br>

@@ -18,9 +18,9 @@ if ($conn->connect_error) {
 
 function checkLogIn() {
     if ($_SESSION["loggedIn"] == TRUE) {
-        header("location: ../Main_Pages/Main_Page_beheerder.php");
+        header("location: Main_Page_beheerder.php");
     } else {
-        header("location: ../index.php");
+        header("location: index.php");
     }
 }
 checkLogIn();
@@ -48,9 +48,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 //check login 
                 if ($_SESSION["loggedIn"] == TRUE) {
-                    header("location: ../Main_Pages/Main_Page_beheerder.php");
+                    header("location: Main_Page_beheerder.php");
                 } else {
-                    header("location: ../index.php");
+                    header("location: index.php");
                 }
             }else{
                 $_SESSION["loggedIn"] = FALSE;

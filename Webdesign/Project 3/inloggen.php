@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             // controle op klantencode maken
             $code = $_POST["Klantencode"];
-            $sql_controleklant = "SELECT idklant, code FROM klant WHERE Klantencode = '" . $code . "' ";
+            $sql_controleklant = "SELECT idklant, code FROM klant WHERE code = '" . $code . "' ";
            //echo $sql_controleklant;
            // if ($debug) echo $sql_controleklant;
             $resultaat = mysqli_query($conn,$sql_controleklant);
