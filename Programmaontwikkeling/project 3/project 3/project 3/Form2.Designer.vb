@@ -29,7 +29,7 @@ Partial Class Brood_Toevoegen
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(29, 118)
+        Me.Button1.Location = New System.Drawing.Point(29, 204)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(92, 32)
         Me.Button1.TabIndex = 0
@@ -38,7 +38,7 @@ Partial Class Brood_Toevoegen
         '
         'txtBrood
         '
-        Me.txtBrood.Location = New System.Drawing.Point(29, 73)
+        Me.txtBrood.Location = New System.Drawing.Point(29, 67)
         Me.txtBrood.Name = "txtBrood"
         Me.txtBrood.Size = New System.Drawing.Size(100, 22)
         Me.txtBrood.TabIndex = 1
@@ -56,7 +56,7 @@ Partial Class Brood_Toevoegen
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(207, 214)
+        Me.ClientSize = New System.Drawing.Size(234, 354)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtBrood)
         Me.Controls.Add(Me.Button1)

@@ -5,7 +5,7 @@ Public Class Brood_Toevoegen
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
-        Dim insertQuery As String = "insert into brood (naam) VALUES('" & txtBrood.Text & "')"
+        Dim insertQuery As String = "insert into broodtype ( broodnaam) VALUES('" & txtBrood.Text & "')"
         Dim command As New MySqlCommand(insertQuery, conn)
         conn.Open()
 

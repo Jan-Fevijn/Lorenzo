@@ -1,92 +1,53 @@
-create database project3;
+drop database if exists project3;
+CREATE DATABASE if not exists project3;
 
-CREATE TABLE `project3`.`brood` (
-  `idbrood` INT NOT NULL AUTO_INCREMENT,
-  `naam` VARCHAR(45) NULL,
-  PRIMARY KEY (`idbrood`));
+USE project3;
 
-INSERT INTO `project3`.`brood` (`naam`) VALUES ('Bus limburgs terf');
-INSERT INTO `project3`.`brood` (`naam`) VALUES ('bus melkwit');
-INSERT INTO `project3`.`brood` (`naam`) VALUES ('bus fijn volkoren');
-INSERT INTO `project3`.`brood` (`naam`) VALUES ('bus grof volkoren');
-INSERT INTO `project3`.`brood` (`naam`) VALUES ('boeren tarwe');
-INSERT INTO `project3`.`brood` (`naam`) VALUES ('bus wit');
-INSERT INTO `project3`.`brood` (`naam`) VALUES ('bus tarwe');
-INSERT INTO `project3`.`brood` (`naam`) VALUES ('boeren donker meergranen');
-INSERT INTO `project3`.`brood` (`naam`) VALUES ('bus gogh meergranen');
-INSERT INTO `project3`.`brood` (`naam`) VALUES ('bus spelt (half)');
-INSERT INTO `project3`.`brood` (`naam`) VALUES ('boeren tijger tarwe');
-INSERT INTO `project3`.`brood` (`naam`) VALUES ('boeren tijger wit');
-INSERT INTO `project3`.`brood` (`naam`) VALUES ('boeren mout');
+CREATE TABLE `klant` (
+  `idklant` int(11) NOT NULL AUTO_INCREMENT,
+  `naam` varchar(45) NOT NULL,
+  `code` int(11) NOT NULL,
+  PRIMARY KEY (`idklant`)
+) ;
 
+CREATE TABLE `broodtype` (
+  `idbroodtype` int(11) NOT NULL AUTO_INCREMENT,
+  `broodnaam` varchar(45) NOT NULL,
+  PRIMARY KEY (`idbroodtype`)
+) ;
+CREATE TABLE `broodpositiedatum` (
+  `idbroodpositieDatum` int(11) NOT NULL AUTO_INCREMENT,
+  `idbrood` int(11) NOT NULL,
+  `positie` int(11) NOT NULL,
+  `Datum` date NOT NULL,
+  `aantalIn` int(11) NOT NULL,
+  `kostprijs` decimal(8,2) NOT NULL,
+  PRIMARY KEY (`idbroodpositieDatum`),
+  KEY `FKBestaandBrood` (`idbrood`),
+  CONSTRAINT `FKBestaandBrood` FOREIGN KEY (`idbrood`) REFERENCES `broodtype` (`idbroodtype`)
+);
 
-
-CREATE TABLE `project3`.`klant` (
-  `idklant` INT NOT NULL AUTO_INCREMENT,
-  `naam` VARCHAR(45) NULL,
-  `voornaam` VARCHAR(45) NULL,
-  `code` VARCHAR(45) NULL,
-  `saldo` VARCHAR(45) NULL,
-  PRIMARY KEY (`idklant`));
-
-INSERT INTO `project3`.`klant` (`naam`, `voornaam`, `code`, `saldo`) VALUES ('pieters', 'pieter', '0123456789', '5');
-INSERT INTO `project3`.`klant` (`naam`, `voornaam`, `code`, `saldo`) VALUES ('samson', 'sam', '9876543210', '7');
-
-CREATE TABLE `project3`.`automaat` (
-  `plaats` VARCHAR(2) NOT NULL,
-  `broodid` VARCHAR(45) NULL,
-  `prijs` VARCHAR(45) NULL,
-  PRIMARY KEY (`plaats`));
-  
-  ALTER TABLE `project3`.`automaat` 
-CHANGE COLUMN `broodid` `broodid` INT NULL DEFAULT NULL ;
-
-INSERT INTO `project3`.`automaat` (`plaats`, `broodid`, `prijs`) VALUES ('1A', '1', '2.10');
-INSERT INTO `project3`.`automaat` (`plaats`, `broodid`, `prijs`) VALUES ('2A', '2', '2.20');
-INSERT INTO `project3`.`automaat` (`plaats`, `broodid`, `prijs`) VALUES ('3A', '3', '2.30');
-INSERT INTO `project3`.`automaat` (`plaats`, `broodid`, `prijs`) VALUES ('4A', '4', '2.40');
-INSERT INTO `project3`.`automaat` (`plaats`, `broodid`, `prijs`) VALUES ('1B', '5', '2.50');
-INSERT INTO `project3`.`automaat` (`plaats`, `broodid`, `prijs`) VALUES ('2B', '6', '2.60');
-INSERT INTO `project3`.`automaat` (`plaats`, `broodid`, `prijs`) VALUES ('3B', '7', '2.70');
-INSERT INTO `project3`.`automaat` (`plaats`, `broodid`, `prijs`) VALUES ('4B', '8', '2.80');
-INSERT INTO `project3`.`automaat` (`plaats`, `broodid`, `prijs`) VALUES ('1C', '9', '2.90');
-INSERT INTO `project3`.`automaat` (`plaats`, `broodid`, `prijs`) VALUES ('2C', '10', '2.95');
-INSERT INTO `project3`.`automaat` (`plaats`, `broodid`, `prijs`) VALUES ('3C', '11', '3.00');
-INSERT INTO `project3`.`automaat` (`plaats`, `broodid`, `prijs`) VALUES ('4C', '12', '2.25');
-INSERT INTO `project3`.`automaat` (`plaats`, `broodid`, `prijs`) VALUES ('1D', '13', '2.35');
+CREATE TABLE `saldo` (
+  `idsaldo` int(11) NOT NULL AUTO_INCREMENT,
+  `idklant` int(11) NOT NULL,
+  `saldo` decimal(8,2) DEFAULT NULL,
+  `datum` date DEFAULT NULL,
+  `broodpositiedatum` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idsaldo`),
+  KEY `FKklantsaldo` (`idklant`),
+  KEY `FKaankoop` (`broodpositiedatum`),
+  CONSTRAINT `FKaankoop` FOREIGN KEY (`broodpositiedatum`) REFERENCES `broodpositiedatum` (`idbroodpositieDatum`),
+  CONSTRAINT `FKklantsaldo` FOREIGN KEY (`idklant`) REFERENCES `klant` (`idklant`)
+) ;
 
 
-CREATE TABLE `project3`.`transactie` (
-  `idtransactie` INT NOT NULL AUTO_INCREMENT,
-  `code` VARCHAR(45) NULL,
-  `idbrood` VARCHAR(45) NULL,
-  PRIMARY KEY (`idtransactie`));
-  
-  ALTER TABLE `project3`.`transactie` 
-CHANGE COLUMN `idbrood` `idbrood` INT NULL DEFAULT NULL ;
+INSERT INTO `klant` (`naam`, `code`) VALUES ('test', '987654321');
+INSERT INTO `broodtype` (`broodnaam`) VALUES ('storting');
+INSERT INTO `broodtype` (`broodnaam`) VALUES ('bruin brood');
+INSERT INTO `broodpositiedatum` (`idbrood`,`positie`, `Datum`, `aantalIn`, `kostprijs`) VALUES ('1', '0', '0000-00-00', '0', '0.00');
+INSERT INTO `broodpositiedatum` (`idbrood`, `positie`, `Datum`, `aantalIn`, `kostprijs`) VALUES ('2', '2', '2020-04-20', '8', '1.30');
+INSERT INTO `broodpositiedatum` (`idbrood`, `positie`, `Datum`, `aantalIn`, `kostprijs`) VALUES ('2', '2', '2020-04-19', '8', '1.30');
+INSERT INTO `saldo` (`idklant`, `saldo`, `datum`, `broodpositiedatum`) VALUES ('1', '-1.3', '2020-04-21', '2');
+INSERT INTO `saldo` (`idklant`, `saldo`, `datum`, `broodpositiedatum`) VALUES ('1', '-1.3', '2020-04-21', '2');
+INSERT INTO `saldo` (`idklant`, `saldo`, `datum`, `broodpositiedatum`) VALUES ('1', '20', '2020-04-18', '1');
 
-
-INSERT INTO `project3`.`transactie` (`code`, `idbrood`) VALUES ('0123456789', '2');
-INSERT INTO `project3`.`transactie` (`code`, `idbrood`) VALUES ('9876543210', '8');
-
-
-ALTER TABLE `project3`.`automaat` 
-ADD INDEX `broodinautomaat_idx` (`broodid` ASC);
-;
-ALTER TABLE `project3`.`automaat` 
-ADD CONSTRAINT `broodinautomaat`
-  FOREIGN KEY (`broodid`)
-  REFERENCES `project3`.`brood` (`idbrood`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION;
-
-
-ALTER TABLE `project3`.`transactie` 
-ADD INDEX `transactievanbrood_idx` (`idbrood` ASC);
-;
-ALTER TABLE `project3`.`transactie` 
-ADD CONSTRAINT `transactievanbrood`
-  FOREIGN KEY (`idbrood`)
-  REFERENCES `project3`.`brood` (`idbrood`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION;

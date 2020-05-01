@@ -32,8 +32,8 @@ if (isset($_POST["gbr"]) && isset($_POST["ww"]) && !empty($_POST["gbr"]) &&
      $ww = $_POST['ww'];
      $wwconfirm = $_POST['wwconfirm'];
 
-     if ($ww['ww'] !== $wwconfirm['wwconfirm']) {
-        die('Password and Confirm password should match!');   
+     if ($ww !== $wwconfirm) {
+        die('password and Confirm password should match!');   
      }
     
      $sql = "INSERT INTO gebruiker (gbr,ww,wwconfirm)
