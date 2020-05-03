@@ -12,6 +12,6 @@ Klantencode: <input type="password" name="Klantencode"><br>
 <br>
 <input type="submit" value="inloggen">
 </form>
-
+<img src="images\brood.jpg" width="500" height="300" float:right;>
 </body>
 </html>

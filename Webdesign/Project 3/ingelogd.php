@@ -134,6 +134,6 @@ $conn->close();
     </tr>
 
 </table>
-<img src="images\brood.jpg" width="500" height="300" > 
+ 
 </body>
 </html>
