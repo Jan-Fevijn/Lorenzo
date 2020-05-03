@@ -89,14 +89,14 @@ $conn->close();
 </br>
 
 <?php
-$sql = "SELECT naam, saldo FROM saldovanklant";
+$sql = "SELECT idklant, saldo FROM saldo";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     echo "<table><tr><th>Naam van de klant</th><th>saldo</th></tr>";
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "<tr><td>" . $row["naam"]. "</td><td>" . $row["saldo"]. "</td></tr>";
+        echo "<tr><td>" . $row["idklant"]. "</td><td>" . $row["saldo"]. "</td></tr>";
     }
     echo "</table>";
 } else {
