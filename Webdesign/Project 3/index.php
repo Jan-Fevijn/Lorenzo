@@ -10,7 +10,8 @@
 <form action="inloggen.php" method="post">
 Klantencode: <input type="password" name="Klantencode"><br>
 <br>
-<input type="submit">
+<input type="submit" value="inloggen">
 </form>
+
 </body>
 </html>
