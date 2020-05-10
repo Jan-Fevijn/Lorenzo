@@ -35,23 +35,46 @@ if ($conn->connect_error) {
     <title>Document</title>
     <script>
 
-        var exp = '', number, decimal, equal, operator, allowSR = true;
-        var textview = document.forms['myform']['textview'];
-
-        function insertNum(num){
-            if (equal){
-                exp = num;
-                textview.value = exp;
-                number = true;
-                equal = false;
-            }
-            else{
-                exp = textview.value + num;
-                textview.value = exp;
-                number = true;
-            }
-            id (operator) decimal = false;
-        }
+function myFunction0() {
+  var x = document.getElementById("myBtn0").value;
+  document.getElementById("text").innerHTML = x;
+}
+function myFunction1() {
+  var x = document.getElementById("myBtn1").value;
+  document.getElementById("text").innerHTML = x;
+}
+function myFunction2() {
+  var x = document.getElementById("myBtn2").value;
+  document.getElementById("text").innerHTML = x;
+}
+function myFunction3() {
+  var x = document.getElementById("myBtn3").value;
+  document.getElementById("text").innerHTML = x;
+}
+function myFunction4() {
+  var x = document.getElementById("myBtn4").value;
+  document.getElementById("text").innerHTML = x;
+}
+function myFunction5() {
+  var x = document.getElementById("myBtn5").value;
+  document.getElementById("text").innerHTML = x;
+}
+function myFunction6() {
+  var x = document.getElementById("myBtn6").value;
+  document.getElementById("text").innerHTML = x;
+}
+function myFunction7() {
+  var x = document.getElementById("myBtn7").value;
+  document.getElementById("text").innerHTML = x;
+}
+function myFunction8() {
+  var x = document.getElementById("myBtn8").value;
+  document.getElementById("text").innerHTML = x;
+}
+function myFunction9() {
+  var x = document.getElementById("myBtn9").value;
+  document.getElementById("text").innerHTML = x;
+}
     </script>
 </head>
 
@@ -80,7 +103,7 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 
-$conn->close();
+
 ?>
 </br>
 </br>
@@ -93,7 +116,7 @@ $sql = "SELECT idklant, saldo FROM saldo";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    echo "<table><tr><th>Naam van de klant</th><th>saldo</th></tr>";
+    echo "<table><tr><th>idklant</th><th>saldo</th></tr>";
     // output data of each row
     while($row = $result->fetch_assoc()) {
         echo "<tr><td>" . $row["idklant"]. "</td><td>" . $row["saldo"]. "</td></tr>";
@@ -105,35 +128,20 @@ if ($result->num_rows > 0) {
 
 $conn->close();
 ?>
+</br>
+</br>
+<h2>Maak uw keuze</h2>
+<input type="button" onclick="myFunction0()" id="myBtn0" value="0">
+<input type="button" onclick="myFunction1()" id="myBtn1" value="1">
+<input type="button" onclick="myFunction2()" id="myBtn2" value="2">
+<input type="button" onclick="myFunction3()" id="myBtn3" value="3">
+<input type="button" onclick="myFunction4()" id="myBtn4" value="4">
+<input type="button" onclick="myFunction5()" id="myBtn5" value="5">
+<input type="button" onclick="myFunction6()" id="myBtn6" value="6">
+<input type="button" onclick="myFunction7()" id="myBtn7" value="7">
+<input type="button" onclick="myFunction8()" id="myBtn8" value="8">
+<input type="button" onclick="myFunction9()" id="myBtn9" value="9">
 
-
-<table class="automaat">
-    <form name="myform">
-    <input type="text" name="textview" disabled>
-    </form>
-    
-    <tr>
-    
-        <td><input type="button" onclick="insertNum(0)" class="button" value="0"></td>
-    </tr>
-    <tr>
-        <td><input type="button" onclick="insertNum(1)" class="button" value="1"></td>
-        <td><input type="button" onclick="insertNum(2)" class="button" value="2"></td>
-        <td><input type="button" onclick="insertNum(3)" class="button" value="3"></td>
-    </tr>
-    <tr>
-        <td><input type="button" onclick="insertNum(4)" class="button" value="4"></td>
-        <td><input type="button" onclick="insertNum(5)" class="button" value="5"></td>
-        <td><input type="button" onclick="insertNum(6)" class="button" value="6"></td>
-    </tr>
-
-    <tr>
-        <td><input type="button" onclick="insertNum(7)" class="button" value="7"></td>
-        <td><input type="button" onclick="insertNum(8)" class="button" value="8"></td>
-        <td><input type="button" onclick="insertNum(9)" class="button" value="9"></td>
-    </tr>
-
-</table>
- 
+<p id="text"></p>
 </body>
 </html>
