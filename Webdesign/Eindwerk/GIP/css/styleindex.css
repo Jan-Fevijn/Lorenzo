@@ -1,11 +1,16 @@
 
-    
-    
+    #form{
+         background-color: white;
+    }
 
 #main {
      width:960px;
     margin:50px auto;
-    font-family:raleway}
+    font-family:raleway
+}
+
+  
+
     
     span {
     color:red

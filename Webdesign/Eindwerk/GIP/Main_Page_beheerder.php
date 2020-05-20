@@ -28,13 +28,14 @@ if ($conn->connect_error) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/reset.css"> 
     <link rel="stylesheet" type="text/css" href="css/Main_Style.css">
+    <script src="jquery-3.5.1.min.js"></script>
     <title>main_page_beheerder</title>
 </head>
 <body>
 <header>
     <p>Welkom</p>
         <ul class="main-nav">
-            <li><a href="#">Afwezigheidslijst</a></li>
+            <li><a href="Afwezigheden.php">Afwezigheidslijst</a></li>
             <li><a href="registreren.php">Registreren</a></li>
             <li><a href="AfwezigeLeerkracht.php">Afwezige leerkracht bijvoegen</a></li>
             <li><a href="index.php">Afmelden</a></li>
