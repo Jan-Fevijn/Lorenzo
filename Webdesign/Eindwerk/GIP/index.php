@@ -32,11 +32,23 @@
 <label>Gebruikersnaam :</label>
 <input id="name" name="Gebruikersnaam" type="text">
 <label>Wachtwoord :</label>
-<input id="password" name="Wachtwoord" type="password"></br>
+<input id="password" name="Wachtwoord" type="password"></br></br>
+<a href="reset-password.php">Wachtwoord vergeten?</a>
+</br>
 </br>
 <input name="submit" type="submit" value="Aanmelden">
 
 </form>
+<?php
+
+if (isset($_GET["newpwd"])) {
+    if ($_GET["newpwd"] == "passwordupdated") {
+        echo '<p class="signupsucces">Your password has been reset</p>';
+    }
+}
+?>
+
+
 </div>
 </div>
 </body>

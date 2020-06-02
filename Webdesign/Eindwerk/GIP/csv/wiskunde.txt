@@ -1,0 +1,76 @@
+Gebruik je alles?
+ja
+- permutatie bv: hoeveel pincodes kan je vormen met 4 cijfers -> permutatie van 4 = 24
+
+
+nee
+volgorde belangrijk?
+ja
+- variatie bv: op hoeveel manieren kun je de eerste 3 renners voorspellen als er 10 deelnemers zijn
+-> variatie van 10 onderaan en 3 bovenaan
+KLEINSTE GETAL ALTIJD BOVENAAN
+
+
+nee
+- combinatie bv: op hoeveel manieren kan je zomaar 3 personen kiezen uit 10 personen
+-> combinatie van 10 onderaan en 3 bovenaan
+KLEINSTE GETAL ALTIJD BOVENAAN£
+
+
+EN = *
+OF = +
+
+en = op hoeveel manieren kan je 3 letters gebruiken ( keuze uit 5 letters) gevolgd door 4 cijfers (keuze uit 7 cijfers)
+
+-> variatie van 3 en 5 * variatie van 4 en 7
+
+
+of = je trekt 3 kaarten uit 52 kaarten. op hoeveel manieren kun je tenmninste 2 azen getrokken hebben?
+
+-> combinatie van 2en4 * 1en48 + 3en4 * 0en48
+
+
+
+-------------------------------------------
+
+
+Permutatie van 6.
+
+
+1) Hoeveel ervan beginnen met abc
+
+abc...    ... = perm 3 = 6
+
+2)Hoeveel ervan bevatten abcd in die volgorde?
+
+abcd..
+.abcd.
+..abcd
+
+.. = 3 * perm 2 = 6
+
+antwoord = 6
+
+
+3) idem maar in willekeurige volgorde?
+
+abcd..
+.abcd.
+..abcd
+
+perm2 * perm 4 = 144
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

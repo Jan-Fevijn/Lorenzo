@@ -30,7 +30,7 @@ header p{
     display: inline;
 }
 
-table  {
-   max-width: 700px;
-   padding:10px;
+
+table, th, td {
+    border: 1px solid black;
   }

@@ -8,17 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "usbw";
-$dbname = "gip";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include("conn.php");
 $result = $conn->query("select volledig from leerkracht");
 ?>
 
@@ -33,8 +23,39 @@ $result = $conn->query("select volledig from leerkracht");
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/script.js"></script>
     <title>main_page_beheerder</title>
+    <script>
+    function ddlselect()
+    {
+        
+        var d=document.getElementById("leerkrachtopties");
+        var displaytext = d.options[d.selectedIndex].text;
+        document.getElementById("leerkracht").text = displaytext;
+    }
+    var entry = document.getElementById("entry");
+    entry.addEventListener("Click", displayDetails);
+
+    var row = 1;
+
+    function displayDetails() {
+        var leerkracht = document.getElementById("leerkracht").value;
+        var lesuur = document.getElementById("lesuur").value;
+        var klas = document.getElementById("klas").value;
+
+        if (!leerkracht || !lesuur || klas){
+            alert=("please fill all the boxes");
+            return;
+        }
+        var display = document.getElementById("display");
+
+        var newRow = display.insertRow(row);
+
+        var cell1 = newRow.insertcell(0);
+        var cell2 = newRow.insertcell(1);
+        var cell3 = newRow.insertcell(2);
+    }
+    </script>
+    
 </head>
 <body>
 <header>
@@ -58,7 +79,7 @@ $result = $conn->query("select volledig from leerkracht");
 </br>
 </br>
    
-  
+  <form action="" method="post">
 
     <div class="container">
 		<div class="row">
@@ -96,29 +117,24 @@ $result = $conn->query("select volledig from leerkracht");
 	</script>
 
 
-    <select id="leerkrachtopties">
+    <select id="leerkrachtopties" onchange="ddlselect();">
   <?php
   while ($rows = $result->fetch_assoc())
  
-  echo "<option value='$rows'>" . $rows['volledig'] . "</option>";
+  echo "<option value='".$rows['volledig']."'>" . $rows['volledig'] . "</option>";
   ?>
 </select>
 
     </br>
-    <input type="text" name="leerkracht" id="leerkrachttextbox" readonly="readonly">
-    <script>
-     function leerkracht()
-     {
-         var d = document.getElementById("leerkrachtleerkrachtopties");
-         var displaytext = d.options[d.selectedIndex].text;
-         document.getElementById("leerkrachttextbox").value = displaytext;
-     }
-  </script>
+    </br>
+    <input type="text" name="leerkracht" id="leerkracht">
+    </br>
+    
  
     </br>
 
 
-<select id="klas">
+<select id="klasopties">
   <option value="officlass_pwd5e1c36e886f65">1Aa</option>
   <option value="officlass_pwd5e1db362603dd">1Ab</option>
   <option value="officlass_pwd5d887a425f221">1bso</option>
@@ -157,7 +173,7 @@ $result = $conn->query("select volledig from leerkracht");
   <option value="officlass_pwd5d7f6c557a689">Duaal7Ki</option>
   <option value="officlass_pwd5b8d202ea53ee">7Sales</option>
   
-
+<input type="text" id="klas">
 </select>
  
     </br>
@@ -166,7 +182,7 @@ $result = $conn->query("select volledig from leerkracht");
  
  
  
- <select id="lesuur">
+ <select id="optieslesuur">
   <option value="lesuur1">Lesuur 1</option>
   <option value="lesuur2">Lesuur 2</option>
   <option value="lesuur3">Lesuur 3</option>
@@ -176,21 +192,24 @@ $result = $conn->query("select volledig from leerkracht");
   <option value="lesuur7">Lesuur 7</option>
   <option value="lesuur8">Lesuur 8</option>
 </select></br></br>
- 
+ <input type="text" id="lesuur">
   <input type="submit" id="entry" value="Leerkracht toevoegen" >
 
 
+  </form>
+  <table id="display">
+  <tr>
+    <th>leerkracht</th>
+    <th>lesuur</th>
+    <th>klas</th>
+  </tr>
+    </table>
+  
+  
+    
+    
 
-<table align="center">
-    <tr>
-        <th>Datum</th>
-        <th>leerkracht</th>
-        <th>lesuur</th>
-        <th>klas</th>
-        <th>taak</th>
-    </tr>
 
-</table>
 
     
 
