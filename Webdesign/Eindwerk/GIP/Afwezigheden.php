@@ -11,7 +11,60 @@
     
    
 </head>
-<body>
+
+<style>
+
+.topnavigation {
+    background-color: #333;
+    overflow: hidden;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnavigation a {
+    float: right;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  /* Change the color of links on hover */
+  .topnavigation a:hover {
+    background-color: orange;
+    color: black;
+  }
+  
+  /* Add a color to the active/current link */
+  .topnavigation a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  .container {
+  background-color: orange;
+  width: 500px;
+  border: 15px solid black;
+  padding: 50px;
+  margin: 20px;
+  position: absolute; 
+  left:25%;
+  margin-left:-225px;
+  top:25%;
+  box-shadow: 5px 10px;
+}
+
+</style>
+<div class="topnavigation">
+       
+            <a href="Main_Page_beheerder.php">Home</a>
+            <a href="registreren.php">Registreren</a>
+            <a href="index.php">Afmelden</a>
+        
+    
+</div><body>
+
+
    <h1 align="center">Afwezige leerlingen aanduiden</h1> 
 
  
@@ -34,7 +87,7 @@
 		        </form>
 	        </div>
 	    </div>
-	</div>
+	
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
 	<script >
 	    $(function () {
@@ -93,8 +146,45 @@
   <option value="officlass_pwd59a872b09a5a5">6WeWi</option>
   <option value="officlass_pwd5d7f6c557a689">Duaal7Ki</option>
   <option value="officlass_pwd5b8d202ea53ee">7Sales</option>
-  
+    </div>
 
+    
+<?php
+
+
+$leerlingen = 
+// API Platform and key
+$platform = "kaas-sgr25.smartschool.be";
+$webservicepwd = "5f672179d26822463055";
+
+try {
+    // Dit heb je nodig om externe entitieiten te ontvangen
+    libxml_disable_entity_loader(false);
+    $soap = new SoapClient('https://'.$platform.'/Webservices/V3?wsdl', ['cache_wsdl' => WSDL_CACHE_NONE]);
+    // Webservice Call
+
+    //mixed getAllAccounts (string $accesscode, string $code, string $recursive) 
+    $result = $soap->getAllAccounts($webservicepwd, 'officlass_pwd59a8728b67844', '1'); //officlass_pwd5b8d201fcf1be
+    // de string dat je mee krijgt is veel te groot om in 1 keer te decoderen dus moet je het in stukjes doen
+    // Daarna de string weer samenvoegen zodat je een complete xml bestand hebt
+
+    $decoded = '';
+    for ($i=0; $i < ceil(strlen($result)/256); $i++) { 
+        $decoded = $decoded . base64_decode(substr($result,$i*256,256));
+    }
+
+    // je moet het xml object als simplexml gebruiken om er iets mee te kunnen doen
+    $decoded = simplexml_load_string($decoded);
+    
+   // Alle gebruikers van smartschool in een lijst van gebruikers zetten
+    foreach ($decoded->account as $extraInfo) {
+        echo $extraInfo->gebruikersnaam . "<br>";
+    }
+     
+} catch (\Exception $e) {
+    echo $e;
+}
+?>
 </select>
  
 

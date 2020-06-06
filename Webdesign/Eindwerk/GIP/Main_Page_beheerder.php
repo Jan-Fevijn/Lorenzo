@@ -23,83 +23,141 @@ $result = $conn->query("select volledig from leerkracht");
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <title>main_page_beheerder</title>
     <script>
-    function ddlselect()
-    {
+    
+    
         
-        var d=document.getElementById("leerkrachtopties");
-        var displaytext = d.options[d.selectedIndex].text;
-        document.getElementById("leerkracht").text = displaytext;
-    }
-    var entry = document.getElementById("entry");
-    entry.addEventListener("Click", displayDetails);
-
-    var row = 1;
-
-    function displayDetails() {
-        var leerkracht = document.getElementById("leerkracht").value;
-        var lesuur = document.getElementById("lesuur").value;
-        var klas = document.getElementById("klas").value;
-
-        if (!leerkracht || !lesuur || klas){
-            alert=("please fill all the boxes");
-            return;
-        }
-        var display = document.getElementById("display");
-
-        var newRow = display.insertRow(row);
-
-        var cell1 = newRow.insertcell(0);
-        var cell2 = newRow.insertcell(1);
-        var cell3 = newRow.insertcell(2);
-    }
     </script>
     
 </head>
+<style>
+   .topnav {
+    background-color: #333;
+    overflow: hidden;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: right;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: orange;
+    color: black;
+  }
+  
+  /* Add a color to the active/current link */
+  .topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+
+  .box {
+  background-color: orange;
+  width: 650px;
+  border: 15px solid black;
+  padding: 50px;
+  margin: 20px;
+  position: absolute; 
+  left:25%;
+  margin-left:-225px;
+  top:20%;
+  box-shadow: 5px 10px;
+}
+
+
+
+.table {
+  background-color: orange;
+  width: 600px;
+  border: 15px solid black;
+  padding: 50px;
+  margin: 20px;
+  position: absolute; 
+  right:15%;
+  margin-right:-225px;
+  top:20%;
+  box-shadow: 5px 10px;
+  
+}
+
+</style>
 <body>
-<header>
-    <p>Welkom</p>
-        <ul class="main-nav">
-            <li><a href="Afwezigheden.php">Afwezigheidslijst</a></li>
-            <li><a href="registreren.php">Registreren</a></li>
-            <li><a href="AfwezigeLeerkracht.php">Afwezige leerkracht bijvoegen</a></li>
-            <li><a href="index.php">Afmelden</a></li>
-        </ul>
-    </header>
+
+    
+<div class="topnav">
+            <img src="images/banner.png" height="75px" width="200px">
+            <a href="Afwezigheden.php">Afwezigheidslijst</a>
+            <a href="registreren.php">Registreren</a>
+            <a href="index.php">Afmelden</a>
+        
+    
+</div>
+
+<h1 align="center">Welkom</h1>
+<script>
+    function ddlselect4()
+    {
+        var d=document.getElementById("dag");
+        var displaytext = d.options[d.selectedIndex].text;
+        document.getElementById("weekdag").value = displaytext;
+    }
+    </script>
 
 
 
-
-
-
-<h2 align="center">Afwezige leerkracht</h2>
 
 
 </br>
 </br>
    
-  <form action="" method="post">
+  <form action="Main_Page_beheerder.php" method="post">
+  
+  
+  
+  <div class="container">
+      <div class="box">
+      <h2 align="center">Afwezige leerkracht</h2>
 
-    <div class="container">
+      <p>Dag van de week</p>
+      <select id="dag" onchange="ddlselect4();">
+  <option>Maandag</option>
+  <option>Dinsdag</option>
+  <option>Woensdag</option>
+  <option>Donderdag</option>
+  <option>Vrijdag</option>
+  
+  </select>
+    <input type="text" placeholder="kies de weekdag" id="weekdag" readonly> 
+     
 		<div class="row">
-		
+			<p>Datum</p>
 		</div>
 		<div class="row">
 	        <div class='col-sm-6'>
 	        	<form>
 		            <div class="form-group">
 		                <div class='input-group date' id='datepicker'>
-		                    <input type='text' class="form-control" />
-		                    <span class="input-group-addon">
-		                        <span class="glyphicon glyphicon-calendar"></span>
-		                    </span>
+		                    <input type='date' id="datum" placeholder="datum ingeven" class="form-control" />
+		                    
+		                        
+		                   
 		                </div>
 		            </div>
 		        </form>
 	        </div>
 	    </div>
-	</div><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+	
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
 	<script >
 	    $(function () {
 	        $('#datepicker').datepicker({
@@ -117,103 +175,209 @@ $result = $conn->query("select volledig from leerkracht");
 	</script>
 
 
-    <select id="leerkrachtopties" onchange="ddlselect();">
+<script>
+    function ddlselect3()
+    {
+        var d=document.getElementById("leerkrachtopties");
+        var displaytext = d.options[d.selectedIndex].text;
+        document.getElementById("leerkracht").value = displaytext;
+    }
+    </script>
+
+<p>Leerkracht</p>
+    <select id="leerkrachtopties" onchange="ddlselect3();">
   <?php
   while ($rows = $result->fetch_assoc())
  
-  echo "<option value='".$rows['volledig']."'>" . $rows['volledig'] . "</option>";
+  echo "<option>" . $rows['volledig'] . "</option>";
   ?>
 </select>
 
-    </br>
-    </br>
-    <input type="text" name="leerkracht" id="leerkracht">
+    
+    
+    <input type="text" name="leerkracht" id="leerkracht" placeholder="kies een leerkracht" readonly>
     </br>
     
  
     </br>
+    <script>
+    function ddlselect2()
+    {
+        var d=document.getElementById("klasopties");
+        var displaytext = d.options[d.selectedIndex].text;
+        document.getElementById("klas").value = displaytext;
+    }
+    </script>
 
-
-<select id="klasopties">
-  <option value="officlass_pwd5e1c36e886f65">1Aa</option>
-  <option value="officlass_pwd5e1db362603dd">1Ab</option>
-  <option value="officlass_pwd5d887a425f221">1bso</option>
-  <option value="officlass_pwd59a8728b67844">2Aa</option>
-  <option value="officlass_pwd59a8728a6e994">2Ab</option>
-  <option value="officlass_pwd59a8728cc6fe9">2Ac</option>
-  <option value="officlass_pwd59a872890644c">2Ad</option>
-  <option value="officlass_pwd59a872b17aeb1">3Econ</option>
-  <option value="officlass_pwd59a872a9a3fa6">3HuWe</option>
-  <option value="officlass_pwd59a872b3c4bcb">3La</option>
-  <option value="officlass_pwd59a872b500e1f">3We</option>
-  <option value="officlass_pwd59a872f2b70be">4Econ</option>
-  <option value="officlass_pwd57c6ea167191c">4Hand</option>
-  <option value="officlass_pwd59a872beb486e">4HuWe</option>
-  <option value="officlass_pwd59a872bd4eaeb">4La</option>
-  <option value="officlass_pwd59a872a7920a0">4We</option>
-  <option value="officlass_pwd59a872bde9b87">5EcMt</option>
-  <option value="officlass_pwd59a872d3d1005">5EcWe</option>
-  <option value="officlass_pwd59a872bd34a99">5EcWi</option>
-  <option value="officlass_pwd59a872b59851d">5HuWe</option>
-  <option value="officlass_pwd5b8d200e3e4bd">5ITN</option>
-  <option value="officlass_pwd57c6e9f178c06">5JHZ</option>
-  <option value="officlass_pwd59ae5eab41ee1">5LaWe</option>
-  <option value="officlass_pwd59a872e827fe2">5LaWi</option>
-  <option value="officlass_pwd57c6e9e89b288">5STWe</option>
-  <option value="officlass_pwd59a872be86b4b">5WeWi</option>
-  <option value="officlass_pwd5b8d201c08dbc">6EcMt</option>
-  <option value="officlass_pwd59a872a8ddcea">6EcWe</option>
-  <option value="officlass_pwd59a872b3020dd">6EcWi</option>
-  <option value="officlass_pwd59a872a58a087">6HuWe</option>
-  <option value="officlass_pwd5b8d201fcf1be">6ITN</option>
-  <option value="officlass_pwd59a872bb24db4">6LaWe</option>
-  <option value="officlass_pwd5b9a184200987">6LaWi</option>
-  <option value="officlass_pwd57c6e9c9ca15e">6STWe</option>
-  <option value="officlass_pwd59a872b09a5a5">6WeWi</option>
-  <option value="officlass_pwd5d7f6c557a689">Duaal7Ki</option>
-  <option value="officlass_pwd5b8d202ea53ee">7Sales</option>
+<p>Klas</p>
+<select id="klasopties" onchange="ddlselect2();">
+  <option>1Aa</option>
+  <option>1Ab</option>
+  <option>1bso</option>
+  <option>2Aa</option>
+  <option>2Ab</option>
+  <option>2Ac</option>
+  <option>2Ad</option>
+  <option>3Econ</option>
+  <option>3HuWe</option>
+  <option>3La</option>
+  <option>3We</option>
+  <option>4Econ</option>
+  <option>4Hand</option>
+  <option>4HuWe</option>
+  <option>4La</option>
+  <option>4We</option>
+  <option>5EcMt</option>
+  <option>5EcWe</option>
+  <option>5EcWi</option>
+  <option>5HuWe</option>
+  <option>5ITN</option>
+  <option>5JHZ</option>
+  <option>5LaWe</option>
+  <option>5LaWi</option>
+  <option>5STWe</option>
+  <option>5WeWi</option>
+  <option>6EcMt</option>
+  <option>6EcWe</option>
+  <option>6EcWi</option>
+  <option>6HuWe</option>
+  <option>6ITN</option>
+  <option>6LaWe</option>
+  <option>6LaWi</option>
+  <option>6STWe</option>
+  <option>6WeWi</option>
+  <option>Duaal7Ki</option>
+  <option>7Sales</option> 
   
-<input type="text" id="klas">
+
 </select>
- 
+<input type="text" id="klas" placeholder="kies een klas" readonly>
     </br>
     </br>
  
+    <script>
+    function ddlselect()
+    {
+        var d=document.getElementById("optieslesuur");
+        var displaytext = d.options[d.selectedIndex].text;
+        document.getElementById("lesuur").value = displaytext;
+    }
+    </script>
+
+ <p>Lesuur</p>
  
+ <select id="optieslesuur" onchange="ddlselect();">
+  <option>Lesuur 1</option>
+  <option>Lesuur 2</option>
+  <option>Lesuur 3</option>
+  <option>Lesuur 4</option>
+  <option>Lesuur 5</option>
+  <option>Lesuur 6</option>
+  <option>Lesuur 7</option>
+  <option>Lesuur 8</option>
+</select>
+ <input type="text" id="lesuur" placeholder="kies een lesuur" readonly></br>
+<p>Taak</p>
+
+ <input type="text" id="taak" placeholder="formuleer de taak"></br>
  
- 
- <select id="optieslesuur">
-  <option value="lesuur1">Lesuur 1</option>
-  <option value="lesuur2">Lesuur 2</option>
-  <option value="lesuur3">Lesuur 3</option>
-  <option value="lesuur4">Lesuur 4</option>
-  <option value="lesuur5">Lesuur 5</option>
-  <option value="lesuur6">Lesuur 6</option>
-  <option value="lesuur7">Lesuur 7</option>
-  <option value="lesuur8">Lesuur 8</option>
-</select></br></br>
- <input type="text" id="lesuur">
-  <input type="submit" id="entry" value="Leerkracht toevoegen" >
+  
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   
+    </br>
+    <div class="logo">
+        <input type="button" onClick="insertData()" value="Leerkracht toevoegen">
+        <input type="reset" value="Alle tekst legen">
+    </div>
+    <script language="javascript">
 
 
+  
+ function insertData() {
+            $("#TableBody").html($("#TableBody").html() + "<tr><td>" + $("#weekdag").val() + "</td><td>" + $("#datum").val() + "</td><td>" + $("#leerkracht").val() + "</td><td>" + $("#klas").val() + "</td><td>" + $("#lesuur").val() + "</td><td>" + $("#taak").val() + "</td><td>" + "<button type='button'" +
+
+                "onclick='delete();' " + "class='btn btn-default'>" +
+                "<span class='glyphicon glyphicon-remove' />" + "</button>" + "</td>" + "</tr>");
+        }
+
+       
+       
+        
+
+    </script>
+<script>
+function delete(ctl) {
+  $(ctl).parents("tr").remove();
+}
+     
+</script>
   </form>
-  <table id="display">
-  <tr>
-    <th>leerkracht</th>
-    <th>lesuur</th>
-    <th>klas</th>
-  </tr>
+  
+  </div>
+  <!-- TWEEDE BOXMODEL -->
+ 
+<div class="table">
+
+
+<table id="t1">
+
+        <caption>Tabel met afwezige leerkrachten</caption>
+     
+       
+
+        
+        <colgroup>
+            <col span="2" class="c2">
+                <col>
+                    <col class="c1">
+        </colgroup>
+        <thead>
+            <tr>
+            <th>
+            Weekdag
+            </th>
+                
+             <th>        
+               Datum     
+                </th>
+  
+                <th>
+                    Leerkracht
+                </th>
+                <th>
+                   Klas
+                </th>
+                <th>
+                    Lesuur
+                </th>
+                <th>
+                    Taak
+                </th>
+                <th>
+                Rij verwijderen
+                <script>
+                     function delete(ctl) {
+                     $(ctl).parents("tr").remove();
+                }</script>
+                </th>
+
+            </tr>
+        </thead>
+        <tbody id="TableBody">
+        </tbody>
     </table>
-  
-  
-    
     
 
 
+</div>
+ <script>
 
-    
 
 
+
+
+ </script>
 
 
 
