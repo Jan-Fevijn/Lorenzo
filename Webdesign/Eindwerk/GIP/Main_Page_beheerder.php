@@ -76,7 +76,7 @@ $result = $conn->query("select volledig from leerkracht");
 
 
 
-.table {
+#table {
   background-color: orange;
   width: 600px;
   border: 15px solid black;
@@ -315,10 +315,30 @@ function delete(ctl) {
   </form>
   
   </div>
-  <!-- TWEEDE BOXMODEL -->
- 
-<div class="table">
 
+
+
+  <script>
+function printDiv(table) {
+      var printContents = document.getElementById(table).innerHTML;    
+   var originalContents = document.body.innerHTML;      
+   document.body.innerHTML = printContents;     
+   window.print();     
+   document.body.innerHTML = originalContents;
+   }
+</script>
+
+
+
+
+
+
+
+
+  <!-- TWEEDE BOXMODEL -->
+  
+<div id="table">
+<input type='button' value='tabel afprinten' onclick='printDiv("table");'/>
 
 <table id="t1">
 

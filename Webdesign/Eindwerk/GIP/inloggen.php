@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // controle gbr en ww + guery maken
             $gbr = $_POST["Gebruikersnaam"];
             $ww = $_POST["Wachtwoord"];
-            $sql_controleBeheerder = "SELECT id, gbr, ww FROM gebruiker WHERE gbr = '" . $gbr . "' and ww = '" . $ww . "'";
+          
             $sql_controleGebruiker = "SELECT id, gbr, ww FROM gebruiker WHERE gbr = '" . $gbr . "' and ww = '" . $ww . "'";
             $resultaat = mysqli_query($conn,$sql_controleGebruiker);
             $result = mysqli_query($conn,$sql_controleBeheerder);
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }else{
                 $_SESSION["loggedIn"] = FALSE;
                 checkLogIn();
-                //header('location: index.php?fout=gebruiker niet gevonden of foutief wachtwoord.');
+                header('location: index.php?fout=gebruiker niet gevonden of foutief wachtwoord.');
             }
 
 }}
