@@ -1,5 +1,7 @@
 
+create database gip;
 
+use gip;
 
 CREATE TABLE `gip`.`gebruiker` (
   `idgebruiker` INT NOT NULL AUTO_INCREMENT,
